@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
+import SiteHeader from "./SiteHeader.jsx";
 
 const ArrowUpRight = ({ className = "" }) => (
   <svg
@@ -66,7 +67,6 @@ const projects = [
 ];
 
 function App() {
-  const [menuOpen, setMenuOpen] = useState(false);
   const [headerMode, setHeaderMode] = useState("top");
   const heroRef = useRef(null);
   const previousScrollY = useRef(0);
@@ -122,54 +122,9 @@ function App() {
     };
   }, []);
 
-  const closeMenu = () => setMenuOpen(false);
-
   return (
     <>
-      <header className={`site-header site-header--${headerMode}`}>
-        <a className="wordmark" href="#top" aria-label="Zucker Engineering & Design, home">
-          <span className="wordmark-mark" aria-hidden="true">
-            <svg viewBox="0 0 36 36" fill="none">
-              <path
-                d="M5 25.5 17.8 5l13.1 20.5H5Z"
-                stroke="currentColor"
-                strokeWidth="1.4"
-              />
-              <path d="M11 25.5 18 14l7.4 11.5" stroke="currentColor" strokeWidth="1.4" />
-              <path d="M5 30h26" stroke="currentColor" strokeWidth="1.4" />
-            </svg>
-          </span>
-          <span className="wordmark-name">
-            ZUCKER ENGINEERING & DESIGN
-            <span>WATER RESOURCES · PORTLAND, OREGON</span>
-          </span>
-        </a>
-
-        <button
-          className="menu-toggle"
-          type="button"
-          aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
-          aria-expanded={menuOpen}
-          aria-controls="primary-navigation"
-          onClick={() => setMenuOpen(!menuOpen)}
-        >
-          <span />
-          <span />
-        </button>
-
-        <nav
-          className={`navigation${menuOpen ? " navigation--open" : ""}`}
-          id="primary-navigation"
-          aria-label="Main navigation"
-        >
-          <a href="#about" onClick={closeMenu}>About</a>
-          <a href="#services" onClick={closeMenu}>Services</a>
-          <a href="#work" onClick={closeMenu}>Selected work</a>
-          <a className="nav-contact" href="#contact" onClick={closeMenu}>
-            Start a conversation <ArrowUpRight />
-          </a>
-        </nav>
-      </header>
+      <SiteHeader headerMode={headerMode} />
 
       <main id="top">
         <section className="hero section-shell" ref={heroRef}>
@@ -180,14 +135,6 @@ function App() {
               <em>Environmental Design</em><br />{" "}
               and Support Services
             </h1>
-            <div className="hero-bottom">
-              <p className="hero-intro">
-                Zucker Engineering &amp; Design
-              </p>
-              <a className="text-link" href="#about">
-                Get to know us <ArrowRight />
-              </a>
-            </div>
           </div>
           <div
             className="hero-image image-placeholder"
@@ -198,15 +145,6 @@ function App() {
                 "url('https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=2200&q=90')",
             }}
           >
-            <div className="hero-image-note">
-              <span>WATER RESOURCES ENGINEERING</span>
-              <span>PORTLAND, OREGON</span>
-            </div>
-            <div className="hero-image-stamp" aria-hidden="true">
-              <span>ENVIRONMENTAL DESIGN</span>
-              <span>ENGINEERING &amp; SUPPORT</span>
-              <span>✳</span>
-            </div>
           </div>
           <div className="hero-index" aria-hidden="true">
             <span>01</span>
@@ -218,7 +156,6 @@ function App() {
         <section className="intro section-shell" id="about">
           <div className="section-label">
             <span>01 — WHO WE ARE</span>
-            <span>WATER RESOURCES ENGINEERING · PORTLAND, OREGON</span>
           </div>
           <div className="intro-content">
             <p className="intro-heading">
@@ -237,24 +174,14 @@ function App() {
               </p>
             </div>
           </div>
-          <div className="values-row">
-            <span>ENGINEERING &amp; CONSTRUCTION</span>
-            <span>ENVIRONMENTAL SCIENCE &amp; PERMITTING</span>
-            <span>GROUNDED IN PLACE</span>
-          </div>
         </section>
 
         <section className="services section-shell" id="services">
           <div className="section-label">
             <span>02 — WHAT WE DO</span>
-            <span>ENVIRONMENTAL DESIGN AND SUPPORT SERVICES</span>
           </div>
           <div className="services-heading">
-            <h2>Solutions for<br />built and natural <em>places.</em></h2>
-            <p>
-              Multidisciplinary water resources engineering, environmental
-              design, permitting, and project support.
-            </p>
+            <h2>Services</h2>
           </div>
           <div className="service-list">
             {services.map((service, index) => (
@@ -270,7 +197,6 @@ function App() {
         <section className="work section-shell" id="work">
           <div className="section-label">
             <span>03 — SELECTED WORK</span>
-            <span>A FEW THINGS WE’RE PROUD OF.</span>
           </div>
           <div className="work-heading">
             <h2>Places tell<br />their own <em>stories.</em></h2>
@@ -296,32 +222,12 @@ function App() {
           <p className="photo-note">PROJECT NAMES, DESCRIPTIONS, AND PHOTOGRAPHY ARE PLACEHOLDERS.</p>
         </section>
 
-        <section className="approach">
-          <div className="approach-image image-placeholder" role="img" aria-label="Placeholder photograph of a forested mountain landscape">
-            <span>PLACEHOLDER PHOTOGRAPH / YOUR TEAM OR A PROJECT SITE</span>
-          </div>
-          <div className="approach-content">
-            <p className="eyebrow">A THOUGHTFUL WAY FORWARD</p>
-            <h2>Big-picture thinkers.<br /><em>Good neighbours.</em></h2>
-            <p className="approach-copy">
-              PLACEHOLDER — Describe how you collaborate, make decisions, and
-              keep projects moving. Make this a simple, human explanation of
-              what it feels like to work with your team.
-            </p>
-            <a className="text-link text-link--light" href="#contact">
-              How we work <ArrowRight />
-            </a>
-            <span className="approach-number">04 / OUR APPROACH</span>
-          </div>
-        </section>
-
         <section className="contact section-shell" id="contact">
           <div className="section-label">
-            <span>05 — GET IN TOUCH</span>
-            <span>GOOD THINGS START WITH A CONVERSATION.</span>
+            <span>04 — CONTACT</span>
           </div>
           <div className="contact-content">
-            <h2>Have a place<br />in <em>mind?</em></h2>
+            <h2>Contact</h2>
             <div className="contact-aside">
               <p>
                 PLACEHOLDER — Tell people what to reach out about and who they
