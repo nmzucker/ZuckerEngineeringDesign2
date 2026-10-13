@@ -34,7 +34,6 @@ function AboutPage() {
             </div>
 
             <div className="profile-content">
-              <p className="eyebrow">MEET THE PRINCIPAL ENGINEER</p>
               <h2>Adam Zucker, PE, CWRE</h2>
               <p className="profile-role">Principal Engineer</p>
 

@@ -74,6 +74,7 @@ function App() {
   useEffect(() => {
     const hero = heroRef.current;
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const phoneViewport = window.matchMedia("(max-width: 640px)");
     if (!hero) return undefined;
 
     let frame = 0;
@@ -95,8 +96,8 @@ function App() {
           0,
           Math.min(1, -hero.getBoundingClientRect().top / hero.offsetHeight),
         );
-        hero.style.setProperty("--hero-image-shift", `${progress * 42}px`);
-        hero.style.setProperty("--hero-image-scale", `${1 + progress * 0.07}`);
+        hero.style.setProperty("--hero-image-shift", `${progress * (phoneViewport.matches ? 42 : 12)}px`);
+        hero.style.setProperty("--hero-image-scale", `${1 + progress * (phoneViewport.matches ? 0.07 : 0)}`);
         hero.style.setProperty("--hero-copy-opacity", `${1 - progress * 0.7}`);
       } else {
         hero.style.setProperty("--hero-image-shift", "0px");
@@ -185,11 +186,10 @@ function App() {
           </div>
           <div className="service-list">
             {services.map((service, index) => (
-              <a className="service-item" href="#contact" key={service}>
+              <div className="service-item" key={service}>
                 <span className="service-number">{String(index + 1).padStart(2, "0")}</span>
                 <span className="service-title">{service}</span>
-                <span className="service-arrow"><ArrowUpRight /></span>
-              </a>
+              </div>
             ))}
           </div>
         </section>

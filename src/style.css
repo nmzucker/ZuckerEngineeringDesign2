@@ -341,7 +341,7 @@ p {
   background-size: cover;
   background-position: center 54%;
   position: absolute;
-  inset: -8% 0;
+  inset: -16px 0;
   z-index: 0;
   color: white;
   overflow: hidden;
@@ -457,15 +457,18 @@ p {
 .service-item {
   min-height: 92px;
   display: grid;
-  grid-template-columns: 0.4fr 1.5fr 30px;
+  grid-template-columns: 0.4fr 1.5fr;
   align-items: center;
   gap: 25px;
   border-bottom: 1px solid #c8cec1;
-  transition: padding 180ms ease;
+  transition:
+    padding 180ms ease,
+    background-color 180ms ease;
 }
 
 .service-item:hover {
   padding-left: 9px;
+  background-color: rgba(255, 255, 255, 0.42);
 }
 
 .service-number {
@@ -478,23 +481,6 @@ p {
   letter-spacing: -0.04em;
 }
 
-.service-description {
-  max-width: 335px;
-  color: #697067;
-  font-size: 11px;
-  line-height: 1.6;
-}
-
-.service-arrow {
-  display: grid;
-  place-items: center;
-  width: 29px;
-  height: 29px;
-  border: 1px solid #abb2a4;
-  border-radius: 50%;
-}
-
-.service-arrow svg,
 .project-open svg {
   width: 16px;
   height: 16px;
@@ -1062,9 +1048,8 @@ p {
   }
 
   .service-item {
-    position: relative;
     min-height: 0;
-    grid-template-columns: 31px 1fr 30px;
+    grid-template-columns: 31px 1fr;
     gap: 8px;
     padding: 19px 0 18px;
   }
@@ -1077,19 +1062,6 @@ p {
 
   .service-title {
     font-size: 19px;
-  }
-
-  .service-description {
-    grid-column: 2 / 4;
-    padding-right: 25px;
-    font-size: 10px;
-  }
-
-  .service-arrow {
-    grid-column: 3;
-    grid-row: 1;
-    width: 26px;
-    height: 26px;
   }
 
   .work {
@@ -1182,13 +1154,38 @@ p {
   }
 
   .profile-grid {
-    grid-template-columns: 1fr;
-    gap: 35px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
     padding-top: 30px;
   }
 
+  .profile-content {
+    display: contents;
+  }
+
+  .profile-content h2 {
+    order: 0;
+  }
+
+  .profile-role {
+    order: 1;
+    margin-bottom: 0;
+  }
+
   .profile-portrait {
+    order: 2;
     max-width: 360px;
+    margin-top: 20px;
+    margin-bottom: 30px;
+  }
+
+  .profile-biography {
+    order: 3;
+  }
+
+  .profile-credentials {
+    order: 4;
   }
 
   .profile-content h2 {
