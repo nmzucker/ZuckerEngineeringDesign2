@@ -2,13 +2,14 @@ import React, { useState } from "react";
 
 function SiteHeader({ headerMode = "visible", aboutPage = false }) {
   const [menuOpen, setMenuOpen] = useState(false);
-  const sectionLink = (section) => (aboutPage ? `/#${section}` : `#${section}`);
+  const basePath = import.meta.env.BASE_URL;
+  const sectionLink = (section) => `${aboutPage ? basePath : ""}#${section}`;
 
   return (
     <header
       className={`site-header site-header--${headerMode}${aboutPage ? " site-header--about" : ""}`}
     >
-      <a className="wordmark" href="/" aria-label="Zucker Engineering & Design, home">
+      <a className="wordmark" href={basePath} aria-label="Zucker Engineering & Design, home">
         <span className="wordmark-mark" aria-hidden="true">
           <svg viewBox="0 0 36 36" fill="none">
             <path
@@ -43,7 +44,7 @@ function SiteHeader({ headerMode = "visible", aboutPage = false }) {
         id="primary-navigation"
         aria-label="Main navigation"
       >
-        <a href="/about.html" aria-current={aboutPage ? "page" : undefined} onClick={() => setMenuOpen(false)}>
+        <a href={`${basePath}about.html`} aria-current={aboutPage ? "page" : undefined} onClick={() => setMenuOpen(false)}>
           About
         </a>
         <a href={sectionLink("services")} onClick={() => setMenuOpen(false)}>Services</a>

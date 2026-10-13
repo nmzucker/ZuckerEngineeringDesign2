@@ -4,6 +4,8 @@ import adamHeadShot from "../Images/AdamHeadShot.jpg";
 import aboutBanner from "../Images/GreasyCreekCulvert.JPG";
 
 function AboutPage() {
+  const basePath = import.meta.env.BASE_URL;
+
   return (
     <>
       <SiteHeader aboutPage />
@@ -84,12 +86,12 @@ function AboutPage() {
       </main>
 
       <footer className="site-footer">
-        <a className="footer-wordmark" href="/">
+        <a className="footer-wordmark" href={basePath}>
           ZUCKER ENGINEERING &amp; DESIGN
           <span>WATER RESOURCES · PORTLAND, OREGON</span>
         </a>
         <span>© {new Date().getFullYear()} ZUCKER ENGINEERING &amp; DESIGN. ALL RIGHTS RESERVED.</span>
-        <a href="/#contact">CONTACT</a>
+        <a href={`${basePath}#contact`}>CONTACT</a>
       </footer>
     </>
   );

@@ -16,6 +16,14 @@ npm run build
 npm run preview
 ```
 
+## Publishing on GitHub Pages
+
+The `Deploy static content to Pages` GitHub Actions workflow builds the Vite app
+and publishes the generated `dist/` folder. In the repository's GitHub Pages
+settings, choose **GitHub Actions** as the build and deployment source. Push
+changes to `main` to publish updates; the workflow will deploy each successful
+build automatically.
+
 ## Adding your content
 
 - Update project names, descriptions, contact details, and other remaining placeholder copy in `src/App.jsx`.
