@@ -100,10 +100,12 @@ function App() {
         hero.style.setProperty("--hero-image-shift", `${progress * (phoneViewport.matches ? 42 : 12)}px`);
         hero.style.setProperty("--hero-image-scale", `${1 + progress * (phoneViewport.matches ? 0.07 : 0)}`);
         hero.style.setProperty("--hero-copy-opacity", `${1 - progress * 0.7}`);
+        hero.style.setProperty("--hero-title-shift", `${progress * -18}px`);
       } else {
         hero.style.setProperty("--hero-image-shift", "0px");
         hero.style.setProperty("--hero-image-scale", "1");
         hero.style.setProperty("--hero-copy-opacity", "1");
+        hero.style.setProperty("--hero-title-shift", "0px");
       }
       previousScrollY.current = scrollY;
     };
