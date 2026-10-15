@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import companyLogo from "../Images/Zucker_logo_color.png";
 
 function SiteHeader({ headerMode = "visible", aboutPage = false }) {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -10,21 +11,7 @@ function SiteHeader({ headerMode = "visible", aboutPage = false }) {
       className={`site-header site-header--${headerMode}${aboutPage ? " site-header--about" : ""}`}
     >
       <a className="wordmark" href={basePath} aria-label="Zucker Engineering & Design, home">
-        <span className="wordmark-mark" aria-hidden="true">
-          <svg viewBox="0 0 36 36" fill="none">
-            <path
-              d="M5 25.5 17.8 5l13.1 20.5H5Z"
-              stroke="currentColor"
-              strokeWidth="1.4"
-            />
-            <path d="M11 25.5 18 14l7.4 11.5" stroke="currentColor" strokeWidth="1.4" />
-            <path d="M5 30h26" stroke="currentColor" strokeWidth="1.4" />
-          </svg>
-        </span>
-        <span className="wordmark-name">
-          ZUCKER ENGINEERING &amp; DESIGN
-          <span>WATER RESOURCES · PORTLAND, OREGON</span>
-        </span>
+        <img className="wordmark-logo" src={companyLogo} alt="Zucker Engineering & Design" />
       </a>
 
       <button

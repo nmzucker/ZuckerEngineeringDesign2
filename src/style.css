@@ -71,11 +71,6 @@ button {
     color 240ms ease;
 }
 
-.site-header .wordmark-mark,
-.site-header .wordmark-name span {
-  color: white;
-}
-
 .site-header--hidden,
 .site-header--visible {
   position: fixed;
@@ -96,24 +91,29 @@ button {
   box-shadow: 0 4px 18px rgba(27, 43, 37, 0.06);
 }
 
+.site-header--top {
+  color: var(--ink);
+  background: #fff;
+  border-bottom-color: rgba(27, 43, 37, 0.12);
+  box-shadow: 0 4px 18px rgba(27, 43, 37, 0.06);
+}
+
 .site-header--about {
   position: sticky;
   top: 0;
 }
 
-.site-header--visible .wordmark-mark,
-.site-header--visible .wordmark-name span {
-  color: var(--muted);
-}
-
+.site-header--top .navigation a,
 .site-header--visible .navigation a {
   color: var(--ink);
 }
 
+.site-header--top .navigation a:hover,
 .site-header--visible .navigation a:hover {
   color: #78874b;
 }
 
+.site-header--top .navigation .nav-contact,
 .site-header--visible .navigation .nav-contact {
   border-color: rgba(27, 43, 37, 0.3);
 }
@@ -125,22 +125,17 @@ button {
 .wordmark {
   display: inline-flex;
   align-items: center;
-  gap: 11px;
+  flex: 0 1 auto;
+  line-height: 0;
+  margin-left: -8px;
 }
 
-.wordmark-mark {
-  width: 35px;
-  height: 35px;
-  color: var(--forest);
-}
-
-.wordmark-mark svg {
+.wordmark-logo {
   display: block;
-  width: 100%;
-  height: 100%;
+  width: clamp(170px, 19vw, 240px);
+  height: auto;
 }
 
-.wordmark-name,
 .footer-wordmark {
   display: flex;
   flex-direction: column;
@@ -150,7 +145,6 @@ button {
   letter-spacing: 0.105em;
 }
 
-.wordmark-name span,
 .footer-wordmark span {
   font-size: 8px;
   font-weight: 500;
@@ -199,10 +193,12 @@ button {
   background: white;
 }
 
+.site-header--top .menu-toggle,
 .site-header--visible .menu-toggle {
   border-color: var(--line);
 }
 
+.site-header--top .menu-toggle span,
 .site-header--visible .menu-toggle span {
   background: var(--ink);
 }
@@ -217,9 +213,9 @@ button {
   min-height: clamp(700px, 100svh, 960px);
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-end;
   padding-top: 94px;
-  padding-bottom: 0;
+  padding-bottom: clamp(72px, 11vh, 130px);
   color: white;
   overflow: hidden;
   background: #253d35;
@@ -339,7 +335,7 @@ p {
 
 .hero-image {
   background-size: cover;
-  background-position: center 54%;
+  background-position: center 52%;
   position: absolute;
   inset: -16px 0;
   z-index: 0;
@@ -888,9 +884,8 @@ p {
     position: sticky;
   }
 
-  .wordmark-mark {
-    width: 31px;
-    height: 31px;
+  .wordmark-logo {
+    width: 165px;
   }
 
   .menu-toggle {
@@ -966,12 +961,12 @@ p {
   .hero {
     min-height: max(760px, 100svh);
     padding-top: 82px;
-    padding-bottom: 0;
+    padding-bottom: 74px;
   }
 
   .hero-image {
     inset: -4% 0;
-    background-position: 57% center;
+    background-position: 36% center;
   }
 
   .eyebrow,

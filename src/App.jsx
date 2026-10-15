@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import SiteHeader from "./SiteHeader.jsx";
+import heroImage from "../Images/NeskowinGhostForest-hero.jpg";
 
 const ArrowUpRight = ({ className = "" }) => (
   <svg
@@ -140,10 +141,9 @@ function App() {
           <div
             className="hero-image image-placeholder"
             role="img"
-            aria-label="Placeholder landscape photograph of a mountain lake"
+            aria-label="Neskowin Ghost Forest on the Oregon coast"
             style={{
-              backgroundImage:
-                "url('https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=2200&q=90')",
+              backgroundImage: `url("${heroImage}")`,
             }}
           >
           </div>
