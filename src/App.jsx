@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import SiteHeader from "./SiteHeader.jsx";
 import heroImage from "../Images/NeskowinGhostForest-hero.jpg";
+import companyLogo from "../Images/Zucker_logo_color.png";
 
 const ArrowUpRight = ({ className = "" }) => (
   <svg
@@ -73,6 +74,13 @@ function App() {
   const previousScrollY = useRef(0);
 
   useEffect(() => {
+    const targetId = window.location.hash.slice(1);
+    if (!targetId) return;
+
+    document.getElementById(targetId)?.scrollIntoView();
+  }, []);
+
+  useEffect(() => {
     const hero = heroRef.current;
     const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
     const phoneViewport = window.matchMedia("(max-width: 640px)");
@@ -143,7 +151,7 @@ function App() {
           <div
             className="hero-image image-placeholder"
             role="img"
-            aria-label="Neskowin Ghost Forest on the Oregon coast"
+            aria-label="Stormwater landscape at Washington Park in Portland, Oregon"
             style={{
               backgroundImage: `url("${heroImage}")`,
             }}
@@ -201,8 +209,8 @@ function App() {
             <span>03 — SELECTED WORK</span>
           </div>
           <div className="work-heading">
-            <h2>Places tell<br />their own <em>stories.</em></h2>
-            <a className="text-link" href="#contact">
+            <h2>Past Projects</h2>
+            <a className="text-link" href={`${import.meta.env.BASE_URL}projects.html`}>
               See all projects <ArrowRight />
             </a>
           </div>
@@ -235,10 +243,10 @@ function App() {
                 PLACEHOLDER — Tell people what to reach out about and who they
                 can contact. Add your preferred contact details below.
               </p>
-              <a className="contact-email" href="mailto:hello@example.com">
-                hello@example.com <ArrowUpRight />
+              <a className="contact-email" href="mailto:adam@zuckerengineering.com">
+                adam@zuckerengineering.com <ArrowUpRight />
               </a>
-              <p className="contact-details">000.000.0000 · YOUR CITY, REGION</p>
+              <a className="contact-phone" href="tel:+15039563473">503 956 3473</a>
             </div>
           </div>
           <div className="contact-bottom">
@@ -249,9 +257,11 @@ function App() {
       </main>
 
       <footer className="site-footer">
-        <a className="footer-wordmark" href="#top">ZUCKER ENGINEERING &amp; DESIGN<span>WATER RESOURCES · PORTLAND, OREGON</span></a>
+        <a className="footer-logo" href="#top" aria-label="Zucker Engineering & Design, back to top">
+          <img src={companyLogo} alt="Zucker Engineering & Design" />
+        </a>
         <span>© {new Date().getFullYear()} ZUCKER ENGINEERING &amp; DESIGN. ALL RIGHTS RESERVED.</span>
-        <a href="mailto:hello@example.com">SAY HELLO <ArrowUpRight /></a>
+        <a href="mailto:adam@zuckerengineering.com">CONTACT <ArrowUpRight /></a>
       </footer>
     </>
   );

@@ -1,7 +1,8 @@
 import React from "react";
 import SiteHeader from "./SiteHeader.jsx";
 import adamHeadShot from "../Images/AdamHeadShot.jpg";
-import aboutBanner from "../Images/GreasyCreekCulvert.JPG";
+import aboutBanner from "../Images/WashingtonParkStormwater-hero.jpg";
+import companyLogo from "../Images/Zucker_logo_color.png";
 
 function AboutPage() {
   const basePath = import.meta.env.BASE_URL;
@@ -14,6 +15,7 @@ function AboutPage() {
           className="about-banner"
           style={{ backgroundImage: `url("${aboutBanner}")` }}
           aria-labelledby="about-title"
+          aria-label="Washington Park stormwater landscape"
         >
           <div className="about-banner-shade" />
           <div className="about-banner-content">
@@ -85,9 +87,8 @@ function AboutPage() {
       </main>
 
       <footer className="site-footer">
-        <a className="footer-wordmark" href={basePath}>
-          ZUCKER ENGINEERING &amp; DESIGN
-          <span>WATER RESOURCES · PORTLAND, OREGON</span>
+        <a className="footer-logo" href={basePath} aria-label="Zucker Engineering & Design, home">
+          <img src={companyLogo} alt="Zucker Engineering & Design" />
         </a>
         <span>© {new Date().getFullYear()} ZUCKER ENGINEERING &amp; DESIGN. ALL RIGHTS RESERVED.</span>
         <a href={`${basePath}#contact`}>CONTACT</a>
